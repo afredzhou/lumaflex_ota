@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -9,7 +8,7 @@ void main() {
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "Lumaflex_ota",
+      title: "Flowser",
       home: WebsiteView(),
     ),
   );
@@ -23,8 +22,7 @@ class WebsiteView extends StatefulWidget {
 }
 
 class _WebsiteViewState extends State<WebsiteView> {
-  var url = 'https://framework-ota.vercel.app/';
-  // var url = 'https://jeroen1602.github.io/flutter_web_bluetooth/#/';
+  var url = 'https://framework-ota.netlify.app/';
 
   final urlController = TextEditingController();
   InAppWebViewController? webViewController;
@@ -63,17 +61,6 @@ class _WebsiteViewState extends State<WebsiteView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Lumaflex_ota"),
-          centerTitle: true,
-          leading: canGoBack
-              ? IconButton(
-                  onPressed: () {
-                    webViewController?.goBack();
-                  },
-                  icon: Icon(Icons.arrow_back_ios))
-              : const SizedBox(),
-        ),
         body: SafeArea(
             child: Column(children: <Widget>[
           Expanded(
@@ -97,6 +84,18 @@ class _WebsiteViewState extends State<WebsiteView> {
               ],
             ),
           ),
+              TextField(
+                decoration: InputDecoration(prefixIcon: Icon(Icons.search)),
+                controller: urlController,
+                keyboardType: TextInputType.url,
+                onSubmitted: (value) {
+                  var url = Uri.parse(value);
+                  if (url.scheme.isEmpty) {
+                    url = Uri.parse("https://www.google.com/search?q=" + value);
+                  }
+                  webViewController?.loadUrl(urlRequest: URLRequest(url: url));
+                },
+              ),
         ])));
   }
 }

@@ -1,4 +1,4 @@
-name: lumaflex_ota
+name: flowser
 version: 1.0.0+1
 publish_to: none
 description: A new Flutter project.
@@ -8,13 +8,15 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_inappwebview: ^5.7.2+3
   cupertino_icons: ^1.0.2
   get: 4.6.5
-  flutter_inappwebview: ^5.4.3+7
   url_launcher: ^6.1.4
   permission_handler: ^10.0.0
-  flutter_reactive_ble: ^5.0.2
+  flutter_reactive_ble: ^5.1.1
   web_view_ble: ^0.0.4
+
+
 
 dev_dependencies:
   #flutter_lints: ^2.0.0
