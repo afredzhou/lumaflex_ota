@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.flowser">
+    package="com.example.lumaflex_ota">
    <application
-        android:label="flowser"
+        android:label="lumaflex_ota"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
